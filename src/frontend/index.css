@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono-Variable.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.375rem;
+
+    /* Neon arcade dark theme */
+    --background: 0.09 0.01 285;
+    --foreground: 0.95 0.02 200;
+    --card: 0.12 0.015 285;
+    --card-foreground: 0.95 0.02 200;
+    --popover: 0.12 0.015 285;
+    --popover-foreground: 0.95 0.02 200;
+    --primary: 0.82 0.19 195;
+    --primary-foreground: 0.09 0.01 285;
+    --secondary: 0.16 0.02 285;
+    --secondary-foreground: 0.95 0.02 200;
+    --muted: 0.14 0.015 285;
+    --muted-foreground: 0.55 0.04 240;
+    --accent: 0.76 0.22 330;
+    --accent-foreground: 0.09 0.01 285;
+    --destructive: 0.65 0.25 25;
+    --destructive-foreground: 0.95 0 0;
+    --border: 0.22 0.03 270;
+    --input: 0.22 0.03 270;
+    --ring: 0.82 0.19 195;
+
+    /* Game colors (used directly in canvas, not as CSS vars) */
+    --game-cyan: #00f5ff;
+    --game-magenta: #ff00e4;
+    --game-yellow: #ffdd00;
+    --game-green: #00ff88;
+    --game-void: #0a0a1a;
+
+    --chart-1: 0.82 0.19 195;
+    --chart-2: 0.76 0.22 330;
+    --chart-3: 0.85 0.2 80;
+    --chart-4: 0.72 0.2 145;
+    --chart-5: 0.65 0.25 25;
+    --sidebar: 0.12 0.015 285;
+    --sidebar-foreground: 0.95 0.02 200;
+    --sidebar-primary: 0.82 0.19 195;
+    --sidebar-primary-foreground: 0.09 0.01 285;
+    --sidebar-accent: 0.16 0.02 285;
+    --sidebar-accent-foreground: 0.95 0.02 200;
+    --sidebar-border: 0.22 0.03 270;
+    --sidebar-ring: 0.82 0.19 195;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Cabinet Grotesk", sans-serif;
+    overflow: hidden;
+  }
+}
+
+/* Neon glow utilities */
+.neon-cyan {
+  text-shadow:
+    0 0 7px #00f5ff,
+    0 0 10px #00f5ff,
+    0 0 21px #00f5ff;
+  color: #00f5ff;
+}
+
+.neon-magenta {
+  text-shadow:
+    0 0 7px #ff00e4,
+    0 0 10px #ff00e4,
+    0 0 21px #ff00e4;
+  color: #ff00e4;
+}
+
+.neon-yellow {
+  text-shadow:
+    0 0 7px #ffdd00,
+    0 0 10px #ffdd00,
+    0 0 21px #ffdd00;
+  color: #ffdd00;
+}
+
+.neon-green {
+  text-shadow:
+    0 0 7px #00ff88,
+    0 0 10px #00ff88,
+    0 0 21px #00ff88;
+  color: #00ff88;
+}
+
+.neon-border-cyan {
+  box-shadow:
+    0 0 5px #00f5ff,
+    0 0 10px #00f5ff,
+    inset 0 0 5px rgba(0, 245, 255, 0.1);
+  border-color: #00f5ff;
+}
+
+.neon-border-magenta {
+  box-shadow:
+    0 0 5px #ff00e4,
+    0 0 10px #ff00e4,
+    inset 0 0 5px rgba(255, 0, 228, 0.1);
+  border-color: #ff00e4;
+}
+
+/* Scanline overlay */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Touch button pulse animation */
+@keyframes btn-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.touch-btn-active {
+  animation: btn-pulse 0.15s ease-in-out;
+}
+
+/* Star field animation */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
