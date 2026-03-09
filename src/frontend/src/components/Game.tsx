@@ -1253,7 +1253,7 @@ export default function Game() {
         className="absolute bottom-1 left-1/2 -translate-x-1/2 font-mono text-xs whitespace-nowrap"
         style={{ color: "#1a2233", letterSpacing: "0.05em" }}
       >
-        © {year}. Built with love using{" "}
+        © {year} Ayush Srivastava. All rights reserved. Built with love using{" "}
         <a
           href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
           target="_blank"
